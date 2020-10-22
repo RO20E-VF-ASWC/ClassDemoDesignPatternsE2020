@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Xml.Schema;
 using ClassDemoOfDiffDesignPatterns.pattern.abstractFactory;
 using ClassDemoOfDiffDesignPatterns.pattern.adaptor;
+using ClassDemoOfDiffDesignPatterns.pattern.composite;
 using ClassDemoOfDiffDesignPatterns.pattern.decorator;
 using ClassDemoOfDiffDesignPatterns.pattern.facade;
 using ClassDemoOfDiffDesignPatterns.pattern.factory;
@@ -23,33 +24,35 @@ namespace ClassDemoOfDiffDesignPatterns
     {
         public void Start()
         {
-            /*
-             DemoFactoryMethod();
+            
+             //DemoFactoryMethod();
              
-            
-            DemoSingleton();
-            
+            //DemoSingleton();
 
-            DemoAbstractFactory();
             
+           //DemoAbstractFactory();
+
             
-            DemoAdaptor();
+           //DemoAdaptor();
+
+           //DemoFacade();
+
+           //DemoProxy();
+
+           //DemoDecorator();
+
+           DemoComposite();
+
+
+           //DemoObserver();
+
+           //DemoTemplate();
+
+           //DemoStrategy();
+
+           //DemoState();
           
-            DemoFacade();
-                      
-            DemoProxy();
-            
-            DemoDecorator();
-            
-            
-            DemoObserver();
-           
-            //DemoTemplate();
 
-            //DemoStrategy();
-
-            DemoState();
-           */
         }
 
         private void DemoFactoryMethod()
@@ -72,8 +75,8 @@ namespace ClassDemoOfDiffDesignPatterns
             NoteCatalogue c2 = new NoteCatalogue();
             c2.Add("yet another note");
             Console.WriteLine(c2);
+            
             */
-
             NoteCatalogue c1 = NoteCatalogue.Instance;
             c1.Add("New note");
             Console.WriteLine(c1);
@@ -158,6 +161,24 @@ namespace ClassDemoOfDiffDesignPatterns
 
             IComponent comp3 = new Decorator1(comp2);
             Console.WriteLine(comp3.DoSomething("peter"));
+
+        }
+
+
+        private void DemoComposite()
+        {
+            // some leafs 
+            LeafBox b1 = new LeafBox(100);
+            Composite comp1 = new Composite();
+            comp1.Add(b1);
+            comp1.Add(new LeafBox(50));
+
+            Composite comp2 = new Composite();
+            comp2.Add(b1);
+            comp2.Add(comp1);
+
+            Console.WriteLine(comp2.TotalWeight());
+
 
         }
 
