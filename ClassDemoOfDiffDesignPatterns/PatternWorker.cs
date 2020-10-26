@@ -41,7 +41,7 @@ namespace ClassDemoOfDiffDesignPatterns
 
            //DemoDecorator();
 
-           DemoComposite();
+           //DemoComposite();
 
 
            //DemoObserver();
@@ -50,7 +50,7 @@ namespace ClassDemoOfDiffDesignPatterns
 
            //DemoStrategy();
 
-           //DemoState();
+           DemoState();
           
 
         }
@@ -192,7 +192,7 @@ namespace ClassDemoOfDiffDesignPatterns
             // attach to be observer
             obj.PropertyChanged += (s, args) =>
             {
-                Console.WriteLine($"the changed property is {args.PropertyName}");
+                Console.WriteLine($"Anonym metode :the changed property is {args.PropertyName}");
                 Console.WriteLine($"New values is \n{s}");
             };
 
@@ -201,6 +201,11 @@ namespace ClassDemoOfDiffDesignPatterns
 
             obj.Text = "Anders";
 
+            obj.PropertyChanged -= Update;
+
+            obj.Text = "Vibeke";
+
+
         }
 
         /*
@@ -208,7 +213,7 @@ namespace ClassDemoOfDiffDesignPatterns
          */
         protected void Update(object obj, PropertyChangedEventArgs args)
         {
-            Console.WriteLine($"the changed property is {args.PropertyName}");
+            Console.WriteLine($" Egentlig metode : the changed property is {args.PropertyName}");
             Console.WriteLine($"New values is \n{obj}");
         }
 
